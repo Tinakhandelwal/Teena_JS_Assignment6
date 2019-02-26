@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript document.createElement Method Example</title>
+    <style>
+        table,
+        th,
+        td {
+            font: 17px Calibri;
+            border: solid 2px rgb(10, 10, 10);
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body onload="CreateTable();">
+
+</body>
+
+<script>
+    var arr = [
+        {
+            firstName: "Teena",
+            lastName: "Khandelwal",
+            email: "teena.khandelwal03@gmail.com",
+            id: 6196,
+            phoneNumber: "9799456769",
+            designation: "s/w trainee",
+            DOB: "3/12/1997"
+        },
+        {
+            firstName: "abc",
+            lastName: "Khan",
+            email: "khandelwal03@gmail.com",
+            id: 6186,
+            phoneNumber: "9799457869",
+            designation: "s/w trainee",
+            DOB: "3/11/1997"
+        },
+        {
+            firstName: "fdch",
+            lastName: "gupta",
+            email: "gupta03@gmail.com",
+            id: 4196,
+            phoneNumber: "9788536778",
+            designation: "s/w trainee",
+            DOB: "5/6/1997"
+        },
+    ];
+
+    function CreateTable() {
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement('table');
+        // key and values....
+        var key = Object.keys(arr[0]);
+        var value = arr.map((elements) => {
+            return Object.values(elements);
+        });
+
+        // Table Header......
+        var tr = document.createElement('tr');
+        for (let i = 0; i < key.length; i++) {
+            var th = document.createElement('th');
+            var text = document.createTextNode(key[i]);
+            th.appendChild(text);
+            tr.appendChild(th);
+        }
+        table.appendChild(tr);
+        
+         // Table Definition......
+        for (let i = 0; i < value.length; i++) {
+             tr = document.createElement('tr');
+            for (let j = 0; j < key.length; j++) {
+                var td = document.createElement('td');
+                var text = document.createTextNode(value[i][j]);
+                td.appendChild(text);
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+        document.body.appendChild(table);
+    }
+</script>
+
+</html>
